@@ -24,3 +24,6 @@ Installation :
 pip install flask-mysql
 
 python3 server.py
+
+# Link of Video
+https://drive.google.com/file/d/1WWUYoTxkEPD9DKA5-SMDEgZTSII74wM9/view
