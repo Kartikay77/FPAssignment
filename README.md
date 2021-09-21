@@ -1,5 +1,11 @@
 # FPAssignment
 FPAssignment
+# Details
+Name: Kartikay Gupta
+Reg. No: 18BCE2199
+Course: B.Tech
+Brach:CSE
+College: VIT,Vellore
 # Technologies
 
 WEB FRAMEWORK - FLASK
