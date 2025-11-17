@@ -12,11 +12,12 @@ mysql = MySQL()
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = secret_key
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = "new_password"
+app.config['MYSQL_DATABASE_USER'] = 'flaskuser'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'StrongFlaskP@ss123'
 app.config['MYSQL_DATABASE_DB'] = 'users'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
+
 
 
 
@@ -53,7 +54,7 @@ def fileload():
       passw=request.form['userPassword']
       conctn=mysql.connect()
       db=conctn.cursor()
-      db.execute("SELECT * FROM USERS where username='"+username+"' and passw='"+passw+"'")  # For Selection
+      db.execute("SELECT * FROM USERS WHERE username=%s AND passw=%s", (username, passw))# For Selection
       cnt=db.rowcount
       db.close()
       if cnt==0:
@@ -71,8 +72,8 @@ def fileload():
 def res():
    if request.method == 'POST':
       f = request.files['jsonfile']
-      fin=open(f.filename,'r')
-      array=json.loads(fin.read())
+      array = json.loads(f.read().decode('utf-8'))
+
 
       conctn=mysql.connect()
       db=conctn.cursor()
@@ -101,4 +102,3 @@ def getData():
     	
 if __name__ == '__main__':
    app.run(debug=True)
-
